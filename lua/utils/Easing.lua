@@ -1,4 +1,4 @@
-VOC = {Easing = {
+Easing = {
     -- no easing, no acceleration
     linear = function(t) return t end,
     -- accelerating from zero velocity
@@ -25,4 +25,4 @@ VOC = {Easing = {
     easeOutQuint = function(t) return 1+(t-1)*t*t*t*t end,
     -- acceleration until halfway, then deceleration 
     easeInOutQuint = function(t) return t < 0.5 and 16*t*t*t*t*t or 1+16*(t-1)*t*t*t*t end
-}}
+}

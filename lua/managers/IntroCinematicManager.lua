@@ -76,9 +76,9 @@ function get_level_data(id)
     end
 end
 
-if not VOC_CinematicCamera then
-    VOC_CinematicCamera = class()
-    function VOC_CinematicCamera:init(unit)
+if not ThuverX_CinematicCamera then
+    ThuverX_CinematicCamera = class()
+    function ThuverX_CinematicCamera:init(unit)
         self._unit = unit
         self._camera = World:create_camera()
     
@@ -86,7 +86,7 @@ if not VOC_CinematicCamera then
         self._camera:set_near_range(7.5)
         self._camera:set_far_range(200000)
     
-        self._viewport = managers.viewport:new_vp(0, 0, 1, 1, "VOC_CinematicCamera", CoreManagerBase.PRIO_WORLDCAMERA)
+        self._viewport = managers.viewport:new_vp(0, 0, 1, 1, "ThuverX_CinematicCamera", CoreManagerBase.PRIO_WORLDCAMERA)
         self._director = self._viewport:director()
         self._shaker = self._director:shaker()
         self._camera_controller = self._director:make_camera(self._camera, Idstring("previs_camera"))
@@ -97,23 +97,23 @@ if not VOC_CinematicCamera then
         self._camera_controller:set_both(self._unit:get_object(Idstring("rp_waiting_camera_01")))
     end
 
-    function VOC_CinematicCamera:camera()
+    function ThuverX_CinematicCamera:camera()
         return self._camera
     end
 
-    function VOC_CinematicCamera:shaker()
+    function ThuverX_CinematicCamera:shaker()
         return self._shaker
     end
 
-    function VOC_CinematicCamera:viewport()
+    function ThuverX_CinematicCamera:viewport()
         return self._viewport
     end
 
-    function VOC_CinematicCamera:set_active(x)
+    function ThuverX_CinematicCamera:set_active(x)
         self._viewport:set_active(x)
     end
 
-    function VOC_CinematicCamera:destroy()
+    function ThuverX_CinematicCamera:destroy()
         if self._viewport then
             self._viewport:destroy()
     
@@ -286,7 +286,7 @@ if not IntroCinematicManager then
             whizby
         ]]
 
-        self.hologram = VisualOverhaulCore.managers.holograms:create({
+        self.hologram = IntroCinematics.managers.holograms:create({
             name = "intro_hologram",
             world_pos = map_data.hologram.pos,
             world_rot = map_data.hologram.rot,
@@ -588,7 +588,7 @@ if not IntroCinematicManager then
                         lerp_progress = math.max(0,math.min(1,lerp_progress))
 
                         if map_data.timeline[self.timeline_stage_with_path].easing then
-                            lerp_progress = VOC.Easing[map_data.timeline[self.timeline_stage_with_path].easing](lerp_progress)
+                            lerp_progress = Easing[map_data.timeline[self.timeline_stage_with_path].easing](lerp_progress)
                         end
 
                         if map_data.timeline[self.timeline_stage_with_path].mod_path_speed then
@@ -638,10 +638,12 @@ if not IntroCinematicManager then
             heist_name = map_data.title or managers.localization:text(level_data.name_id),
             difficulty = managers.job:current_difficulty_stars(),
             size = map_data.hologram.size or 500,
-            font = map_data.font or VisualOverhaulCore.global.languages[lang].font,
-            title_font_size = (map_data.title_font_size or 1) * VisualOverhaulCore.global.languages[lang].title_font_size,
-            difficulty_font_size = (map_data.difficulty_font_size or 1) * VisualOverhaulCore.global.languages[lang].difficulty_font_size,
-            difficulty_icon_size = (map_data.difficulty_icon_size or 1) * VisualOverhaulCore.global.languages[lang].difficulty_icon_size
+            font = map_data.font or IntroCinematics.global.languages[lang].font,
+            main_color = map_data.main_color or IntroCinematics.global.colors.main_color,
+            risk_color = map_data.risk_color or IntroCinematics.global.colors.risk_color,
+            title_font_size = (map_data.title_font_size or 1) * IntroCinematics.global.languages[lang].title_font_size,
+            difficulty_font_size = (map_data.difficulty_font_size or 1) * IntroCinematics.global.languages[lang].difficulty_font_size,
+            difficulty_icon_size = (map_data.difficulty_icon_size or 1) * IntroCinematics.global.languages[lang].difficulty_icon_size
         })
     end
 
@@ -738,27 +740,27 @@ end
 
 
 if RequiredScript:lower() == "lib/setups/setup" then
-    VisualOverhaulCore.managers.introcinematics = VisualOverhaulCore.managers.introcinematics or IntroCinematicManager:new()
+    IntroCinematics.managers.introcinematics = IntroCinematics.managers.introcinematics or IntroCinematicManager:new()
 elseif RequiredScript:lower() == "lib/states/ingamewaitingforplayers" then
     Hooks:PostHook(IngameWaitingForPlayersState, "sync_start", "F_"..Idstring("PostHook:sync_start:IntroCinematicManager"):key(), function(self)          
-        VisualOverhaulCore.managers.introcinematics:play(self,managers.job:current_level_id())
+        IntroCinematics.managers.introcinematics:play(self,managers.job:current_level_id())
     end)
     
     Hooks:PostHook(IngameWaitingForPlayersState, "at_exit", "F_"..Idstring("PostHook:at_exit:IntroCinematicManager"):key(), function(self)   
-        VisualOverhaulCore.managers.introcinematics:on_end()
+        IntroCinematics.managers.introcinematics:on_end()
     end)
 
     Hooks:PostHook(IngameWaitingForPlayersState, "_start_delay", "F_"..Idstring("PostHook:_start_delay:IntroCinematicManager"):key(), function(self)   
-        VisualOverhaulCore.managers.introcinematics:delay_hook()
+        IntroCinematics.managers.introcinematics:delay_hook()
     end)
 
 elseif RequiredScript:lower() == "lib/managers/hud/hudmissionbriefing" then
     Hooks:PostHook(MissionBriefingGui, "init", "F_"..Idstring("PostHook:init:HideDefaultBlackScreen"):key(), function(self)
-        VisualOverhaulCore.managers.introcinematics:connect_mission_briefingui(self._safe_workspace,self._full_workspace)
+        IntroCinematics.managers.introcinematics:connect_mission_briefingui(self._safe_workspace,self._full_workspace)
     end)
 elseif RequiredScript:lower() == "lib/managers/voicebriefingmanager" then
     Hooks:PostHook(VoiceBriefingManager, "_sound_callback", "F_"..Idstring("PostHook:_sound_callback:VoiceBriefingManager"):key(), function(self,instance, sound_source, event_type, cookie, label, identifier, position)
-        VisualOverhaulCore.managers.introcinematics:connect_mission_dialog_meta_data({
+        IntroCinematics.managers.introcinematics:connect_mission_dialog_meta_data({
             instance = instance,
             sound_source = sound_source,
             event_type = event_type,

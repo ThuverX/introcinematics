@@ -84,6 +84,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
     ✅  Buluc's Mansion         - fex
     ✅  Dragon Heist            - chas
     ✅  The Ukrainian Prisoner  - sand
+    ✅  Black Cat               - chca
 
     ]]
 
@@ -806,7 +807,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             mvector3.lerp(pos,
                 Vector3(-4033, 2174, -20),
                 Vector3(-540.997, 2174, -20),
-                VOC.Easing.easeOutQuad(local_progress + 0.3))
+                Easing.easeOutQuad(local_progress + 0.3))
 
             self.mem.units["van"]:set_position(pos)
         ]],
@@ -1157,7 +1158,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             mvector3.lerp(pos,
                 Vector3(-1980, -1974, 0),
                 Vector3(-1980, -1587, 0),
-                VOC.Easing.easeOutQuad(local_progress * 3 + 0.3)
+                Easing.easeOutQuad(local_progress * 3 + 0.3)
             )
 
             self.mem.units["van"]:set_position(pos)
@@ -2662,6 +2663,44 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             align = "billboard_x",
             pos = Vector3(-30.2497, -2218.2, 739.7),
             start = 70
+        }
+    }
+
+    self.chca.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(-9162.52, 7873.02, 214.35),Rotation(13.7942, 10.6484, -3.20165e-007)},
+                fov = 80
+            },
+            [46] = {
+                fade_out = 2
+            },
+            [49] = {
+                path = {Vector3(-8909.1, 6602.95, 110.233),Rotation(43.5463, 11.6979, -4.26887e-007)},
+                fov = 80,
+                blackscreen = true
+            },
+            [50] = {
+                fade_in = 1,
+                path = {Vector3(-9970.15, 2888.39, 279.249),Rotation(-125.154, 7.14776, 4.26887e-007)},
+                fov = 80
+            },
+            [99] = {
+                fade_out = 1
+            },
+            [100] = {
+                path = {Vector3(-10133.1, 1306.19, 279.249),Rotation(-64.9547, 1.54777, -1.06722e-007)},
+                fov = 80
+            }
+        },
+        length = 29,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 500,
+            align = "billboard_x",
+            pos = Vector3(-8995.18, 1601.51, 472.514),
+            start = 80
         }
     }
 end)

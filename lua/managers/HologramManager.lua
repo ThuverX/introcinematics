@@ -213,4 +213,4 @@ if not HologramManager then
     end
 end
 
-VisualOverhaulCore.managers.holograms = VisualOverhaulCore.managers.holograms or HologramManager:new()
+IntroCinematics.managers.holograms = IntroCinematics.managers.holograms or HologramManager:new()

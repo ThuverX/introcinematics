@@ -3,6 +3,6 @@
   <object file="introcinematics/units/camera/cinematic_camera" />
   <extensions>
     <!--<extension name="unit_data" class="ScriptUnitData" />-->
-    <extension name="camera" class="VOC_CinematicCamera" />
+    <extension name="camera" class="ThuverX_CinematicCamera" />
   </extensions>
 </unit>
