@@ -1,4 +1,8 @@
-VisualOverhaulCore.global = {
+IntroCinematics.global = {
+    colors = {
+        main_color = Color.white,
+        risk_color = tweak_data.screen_colors.risk
+    },
     languages = {
 		[Idstring("english"):key()] = {
             title_font_size = 1,

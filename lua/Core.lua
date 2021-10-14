@@ -1,5 +1,5 @@
 function _include(file)
-    dofile(VisualOverhaulCore.PATHS.lua .. file)
+    dofile(IntroCinematics.PATHS.lua .. file)
 end
 
 if not Log then
@@ -7,16 +7,15 @@ if not Log then
 end
 
 
-if not VisualOverhaulCore then
-    VisualOverhaulCore = {}
+if not IntroCinematics then
+    IntroCinematics = {}
 
-    VisualOverhaulCore.PATHS = {
+    IntroCinematics.PATHS = {
         assets = ModPath .. "assets/",
-        lua = ModPath .. "lua/",
-        locales = ModPath .. "locales/"
+        lua = ModPath .. "lua/"
     }
 
-    VisualOverhaulCore.HOOKS = {
+    IntroCinematics.HOOKS = {
         ["lib/setups/setup"] = {
             "managers/HologramManager.lua",
             "managers/IntroCinematicManager.lua",
@@ -28,26 +27,26 @@ if not VisualOverhaulCore then
         ["lib/tweak_data/levelstweakdata"] = "tweak_data/LevelsTweakData.lua"
     }
 
-    VisualOverhaulCore.managers = {}
-
-    VisualOverhaulCore.global = {}
-
-    VisualOverhaulCore.error = nil
-    VisualOverhaulCore.urls = {
+    IntroCinematics.managers = {}
+    IntroCinematics.global = {}
+    IntroCinematics.error = nil
+    IntroCinematics.urls = {
         BeardLib = "https://modworkshop.net/mod/14924"
     }
 
-    function VisualOverhaulCore:check_compat()
+    Hooks:RegisterHook("IntroCinematics:GlobalLoaded")
+
+    function IntroCinematics:check_compat()
 
         if not BeardLib then
-            VisualOverhaulCore.error = {
+            IntroCinematics.error = {
                 title = "Intro Cinematic mod can't be loaded",
                 text = "BeardLib is required to use the Intro Cinematic mod\n ",
                 button_list = {
                     {
                         text = "Download BeardLib",
                         callback_func = function()
-                            Steam:overlay_activate("url", VisualOverhaulCore.urls.BeardLib)
+                            Steam:overlay_activate("url", IntroCinematics.urls.BeardLib)
                         end
                     }
                 }
@@ -59,25 +58,27 @@ if not VisualOverhaulCore then
         return true
     end
 
-    function VisualOverhaulCore:process_requires()
+    function IntroCinematics:process_requires()
         _include("tweak_data/Globals.lua")
 
+        Hooks:Call("IntroCinematics:GlobalLoaded")
+
         if RequiredScript then
-            local hook_list = VisualOverhaulCore.HOOKS[RequiredScript:lower()]
+            local hook_list = IntroCinematics.HOOKS[RequiredScript:lower()]
             if hook_list then
                 if type(hook_list) == "string" then
                     hook_list = {hook_list}
                 end
                 for _, file_name in pairs(hook_list) do
-                    dofile(VisualOverhaulCore.PATHS.lua .. file_name)
+                    dofile(IntroCinematics.PATHS.lua .. file_name)
                 end
             end
         end
     end   
 end
 
-if VisualOverhaulCore:check_compat() then
-    VisualOverhaulCore:process_requires()
+if IntroCinematics:check_compat() then
+    IntroCinematics:process_requires()
 end
 
 if RequiredScript:lower() == "lib/managers/menu/menucomponentmanager" then
@@ -85,8 +86,8 @@ if RequiredScript:lower() == "lib/managers/menu/menucomponentmanager" then
     -- Error reporting / compat
 
     Hooks:PostHook(MenuComponentManager, "create_player_profile_gui", "F_"..Idstring("PostHook:MenuComponentManager:create_player_profile_gui"):key(), function(self)
-        if VisualOverhaulCore.error and VisualOverhaulCore.error.title then
-            managers.system_menu:show(VisualOverhaulCore.error)
+        if IntroCinematics.error and IntroCinematics.error.title then
+            managers.system_menu:show(IntroCinematics.error)
         end
     end)
 end
@@ -96,8 +97,8 @@ if RequiredScript:lower() == "core/lib/setups/coresetup" then
     -- Global updater
 
     Hooks:PostHook(CoreSetup, "__update", "F_"..Idstring("PostHook:CoreSetup:__update"):key(), function(self,t,dt)
-        if VisualOverhaulCore.managers.holograms then
-            VisualOverhaulCore.managers.holograms:update(t,dt)
+        if IntroCinematics.managers.holograms then
+            IntroCinematics.managers.holograms:update(t,dt)
         end
     end)
 end
