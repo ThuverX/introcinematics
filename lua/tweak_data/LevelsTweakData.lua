@@ -85,6 +85,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
     ✅  Dragon Heist            - chas
     ✅  The Ukrainian Prisoner  - sand
     ✅  Black Cat               - chca
+    ✅  Mountain Master         - pent
 
     ]]
 
@@ -2701,6 +2702,41 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             align = "billboard_x",
             pos = Vector3(-8995.18, 1601.51, 472.514),
             start = 80
+        }
+    }
+
+    self.pent.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(-527.325, 4689.61, -19.8118),Rotation(-158.462, -18.0008, 2.13443e-007)},
+                fov = 70
+            },
+            [45] = {
+                fade_out = 1
+            },
+            [_b(50)] = {
+                path = {Vector3(-329.232, 4148.39, 132.54),Rotation(-164.064, 48.7996, -1.28066e-006)},
+                fov = 70,
+                blackscreen = true
+            },
+            [50] = {
+                path = {Vector3(-430.645, -661.353, 12036),Rotation(-149.709, 14.8997, 4.26887e-007)},
+                fov = 70,
+                fade_in = 1
+            },
+            [100] = {
+                path = {Vector3(-288.141, -930.361, 12414.4),Rotation(-149.01, -12.7502, 6.4033e-007)},
+                fov = 70
+            }
+        },
+        length = 14,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 400,
+            rot = Rotation(-226.752, 0, -0),
+            pos = Vector3(382.835, -2140.71, 12382.4),
+            start = 50
         }
     }
 end)
