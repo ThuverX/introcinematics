@@ -86,6 +86,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
     ✅  The Ukrainian Prisoner  - sand
     ✅  Black Cat               - chca
     ✅  Mountain Master         - pent
+    ✅  Midland Ranch           - ranc
 
     ]]
 
@@ -2737,6 +2738,28 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             rot = Rotation(-226.752, 0, -0),
             pos = Vector3(382.835, -2140.71, 12382.4),
             start = 50
+        }
+    }
+
+    self.ranc.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(6518.03, -4876.01, 2774.22),Rotation(0.997665, -2.30068, -0)},
+                fov = 70
+            },
+            [100] = {
+                path = {Vector3(7379.2, -3477.98, 2908.28),Rotation(40.1981, -39.4011, -0)},
+                fov = 70
+            }
+        },
+        length = 24,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 800,
+            rot = Rotation(0, 0, -90),
+            pos = Vector3(5436.17, -2044.21, 549.378),
+            start = 70
         }
     }
 end)
