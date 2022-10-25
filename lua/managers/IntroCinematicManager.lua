@@ -595,6 +595,13 @@ if not IntroCinematicManager then
                             lerp_progress = lerp_progress * map_data.timeline[self.timeline_stage_with_path].mod_path_speed 
                         end
 
+                        if stage.fov and stage.smooth_fov then
+                            local from_fov = map_data.timeline[self.timeline_stage_with_path].fov or 90
+                            local to_fov = map_data.timeline[self.timeline_stage_with_path_next].fov or from_fov
+
+                            self.cine_cam:set_fov(math.lerp(from_fov, to_fov, lerp_progress))
+                        end
+
                         mvector3.lerp(self.mem.pos_rot[1],
                             map_data.timeline[self.timeline_stage_with_path].path[1],
                             map_data.timeline[self.timeline_stage_with_path_next].path[1],

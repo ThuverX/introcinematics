@@ -87,6 +87,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
     ✅  Black Cat               - chca
     ✅  Mountain Master         - pent
     ✅  Midland Ranch           - ranc
+    ✅  Lost in Transit         - trai
 
     ]]
 
@@ -2760,6 +2761,29 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             rot = Rotation(0, 0, -90),
             pos = Vector3(5436.17, -2044.21, 549.378),
             start = 70
+        }
+    }
+
+    self.trai.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(-7483.37, 8254.21, -17.0035),Rotation(-119.1, -1.93158, -5.33608e-008)},
+                fov = 50,
+                smooth_fov = true
+            },
+            [100] = {
+                path = {Vector3(-6745.49, 7607.73, 1045.78),Rotation(-116.503, -10.3502, -1.70755e-006)},
+                fov = 80
+            }
+        },
+        length = 24,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 800,
+            rot = Rotation(180, 0, 0),
+            pos = Vector3(-4366.41, 6948.08, 955.294),
+            start = 50
         }
     }
 end)

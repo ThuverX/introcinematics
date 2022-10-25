@@ -1,7 +1,7 @@
 IntroCinematics.global = {
     colors = {
         main_color = Color.white,
-        risk_color = tweak_data.screen_colors.risk
+        risk_color = tweak_data and tweak_data.screen_colors.risk or Color.white
     },
     languages = {
 		[Idstring("english"):key()] = {
