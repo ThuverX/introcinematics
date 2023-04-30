@@ -88,6 +88,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
     ✅  Mountain Master         - pent
     ✅  Midland Ranch           - ranc
     ✅  Lost in Transit         - trai
+    ✅  Hostile Takeover        - corp
 
     ]]
 
@@ -2784,6 +2785,29 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             rot = Rotation(180, 0, 0),
             pos = Vector3(-4366.41, 6948.08, 955.294),
             start = 50
+        }
+    }
+
+    self.corp.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(-881.523, -3340.42, 340.368),Rotation(-25.2088, 4.89913, -0)},
+                fov = 10,
+                smooth_fov = true
+            },
+            [100] = {
+                path = {Vector3(-980.845, -3492.7, 0),Rotation(-35.3595, 8.19992, 0)},
+                fov = 60
+            }
+        },
+        length = 27,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 500,
+            align = "billboard_x",
+            pos = Vector3(-382.788, -2909.33, 273.567),
+            start = 70
         }
     }
 end)
