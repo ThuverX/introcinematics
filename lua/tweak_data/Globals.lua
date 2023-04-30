@@ -56,7 +56,7 @@ IntroCinematics.global = {
             title_font_size = 1,
             difficulty_font_size = 1,
             difficulty_icon_size = 1,
-            font = "thuverx/fonts/notosans/noto_sans"
+            font = "thuverx/fonts/notosans/noto_sans_sc"
         },
 		[Idstring("korean"):key()] = {
             title_font_size = 1,
