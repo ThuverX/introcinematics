@@ -1,4 +1,4 @@
-Easing = {
+IntroCinematics.easing = {
     -- no easing, no acceleration
     linear = function(t) return t end,
     -- accelerating from zero velocity
