@@ -811,7 +811,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             mvector3.lerp(pos,
                 Vector3(-4033, 2174, -20),
                 Vector3(-540.997, 2174, -20),
-                Easing.easeOutQuad(local_progress + 0.3))
+                IntroCinematics.easing.easeOutQuad(local_progress + 0.3))
 
             self.mem.units["van"]:set_position(pos)
         ]],
@@ -1162,7 +1162,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             mvector3.lerp(pos,
                 Vector3(-1980, -1974, 0),
                 Vector3(-1980, -1587, 0),
-                Easing.easeOutQuad(local_progress * 3 + 0.3)
+                IntroCinematics.easing.easeOutQuad(local_progress * 3 + 0.3)
             )
 
             self.mem.units["van"]:set_position(pos)

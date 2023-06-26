@@ -588,7 +588,7 @@ if not IntroCinematicManager then
                         lerp_progress = math.max(0,math.min(1,lerp_progress))
 
                         if map_data.timeline[self.timeline_stage_with_path].easing then
-                            lerp_progress = Easing[map_data.timeline[self.timeline_stage_with_path].easing](lerp_progress)
+                            lerp_progress = IntroCinematics.easing[map_data.timeline[self.timeline_stage_with_path].easing](lerp_progress)
                         end
 
                         if map_data.timeline[self.timeline_stage_with_path].mod_path_speed then

@@ -30,6 +30,7 @@ if not IntroCinematics then
     IntroCinematics.managers = {}
     IntroCinematics.global = {}
     IntroCinematics.error = nil
+    IntroCinematics.easing = {}
     IntroCinematics.urls = {
         BeardLib = "https://modworkshop.net/mod/14924"
     }

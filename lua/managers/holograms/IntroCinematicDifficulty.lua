@@ -67,12 +67,12 @@ function IntroCinematicDifficultyHologram(panel,data)
         end
 
         return function(s,t,dt)
-            risk_text.set_left(math.lerp(-1300,0,(t-s) < 3 and clamp(Easing.easeOutQuart((t - s - 3))) or 1))
-            heist_name.set_top(math.lerp(-1300,0,(t-s) < 2 and clamp(Easing.easeOutQuart((t - s - 2))) or 1))
+            risk_text.set_left(math.lerp(-1300,0,(t-s) < 3 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 3))) or 1))
+            heist_name.set_top(math.lerp(-1300,0,(t-s) < 2 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 2))) or 1))
             for i = 1, data.difficulty, 1 do
                 local element = skulls_panel:child("risk_level_"..tostring(i))
                 if element then 
-                    element:set_top(math.lerp(-element:h(),0,(t-s) < 4.4 and clamp(Easing.easeOutQuart((t - s - 4 - (i*0.1)))) or 1))
+                    element:set_top(math.lerp(-element:h(),0,(t-s) < 4.4 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 4 - (i*0.1)))) or 1))
                 end
             end
         end
@@ -136,22 +136,22 @@ function IntroCinematicDifficultyHologram(panel,data)
 
         return function(s,t,dt)
             t = t - 2
-            top:set_top(math.lerp(-icon:h(),0,(t-s) < 1.1 and clamp(Easing.easeOutQuart((t - s - 0.85 - (0.4)))) or 1))
-            mid:set_top(math.lerp(-icon:h(),0,(t-s) < 1.1 and clamp(Easing.easeOutQuart((t - s - 0.85 - (0.3)))) or 1))
-            bot:set_top(math.lerp(-icon:h(),0,(t-s) < 1.1 and clamp(Easing.easeOutQuart((t - s - 0.85 - (0.1)))) or 1))
+            top:set_top(math.lerp(-icon:h(),0,(t-s) < 1.1 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 0.85 - (0.4)))) or 1))
+            mid:set_top(math.lerp(-icon:h(),0,(t-s) < 1.1 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 0.85 - (0.3)))) or 1))
+            bot:set_top(math.lerp(-icon:h(),0,(t-s) < 1.1 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 0.85 - (0.1)))) or 1))
 
-            spree_amount.set_left(math.lerp(-icon:h(),difficulty_panel:w() / 6 + difficulty_panel:h() / 1.5,(t-s) < 1 and clamp(Easing.easeOutQuart((t - s - 1))) or 1))
-            spree_amount.set_alpha((t-s) < 1 and clamp(Easing.easeOutQuart((t - s - 1) * 2)) or 1)
-            spree_amount.set_font_size(math.lerp(difficulty_panel:h() * 1.4,difficulty_panel:h() * 0.8,(t-s) < 0.9 and clamp(Easing.easeOutQuart((t - s - 0.9) * 2)) or 1))
+            spree_amount.set_left(math.lerp(-icon:h(),difficulty_panel:w() / 6 + difficulty_panel:h() / 1.5,(t-s) < 1 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 1))) or 1))
+            spree_amount.set_alpha((t-s) < 1 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 1) * 2)) or 1)
+            spree_amount.set_font_size(math.lerp(difficulty_panel:h() * 1.4,difficulty_panel:h() * 0.8,(t-s) < 0.9 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 0.9) * 2)) or 1))
 
-            spree_amount.set_text(tostring(math.floor(clamp(math.lerp(0,crime_spree_amount,1 - Easing.easeOutQuart((t - s + 3) * 0.3)), 0, crime_spree_amount))))
+            spree_amount.set_text(tostring(math.floor(clamp(math.lerp(0,crime_spree_amount,1 - IntroCinematics.easing.easeOutQuart((t - s + 3) * 0.3)), 0, crime_spree_amount))))
 
-            face:set_alpha((t-s) < 1.65 and clamp(Easing.easeOutQuart((t - s - 1.65) * 3)) or 1)
+            face:set_alpha((t-s) < 1.65 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 1.65) * 3)) or 1)
 
-            face:set_x(math.lerp(-icon:h() / 2,0,(t-s) < 1.6 and clamp(Easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
-            face:set_y(math.lerp(-icon:h() / 2,0,(t-s) < 1.6 and clamp(Easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
-            face:set_w(math.lerp(icon:h() * 2,icon:h(),(t-s) < 1.6 and clamp(Easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
-            face:set_h(math.lerp(icon:h() * 2,icon:h(),(t-s) < 1.6 and clamp(Easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
+            face:set_x(math.lerp(-icon:h() / 2,0,(t-s) < 1.6 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
+            face:set_y(math.lerp(-icon:h() / 2,0,(t-s) < 1.6 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
+            face:set_w(math.lerp(icon:h() * 2,icon:h(),(t-s) < 1.6 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
+            face:set_h(math.lerp(icon:h() * 2,icon:h(),(t-s) < 1.6 and clamp(IntroCinematics.easing.easeOutQuart((t - s - 1.6) * 4)) or 1))
         end
     end
 end
