@@ -3,7 +3,7 @@
 	"description": "Intro Cinematics add cinematics to Payday 2",
 	"author": "ThuverX",
 	"contact": "https://discord.gg/QH8U8m9",
-	"version": "127",
+	"version": "128",
 	"priority": 0,
 	"hooks": [
 		{
