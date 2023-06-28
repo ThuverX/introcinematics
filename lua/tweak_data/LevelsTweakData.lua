@@ -89,6 +89,7 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
     ✅  Midland Ranch           - ranc
     ✅  Lost in Transit         - trai
     ✅  Hostile Takeover        - corp
+    ✅  Crude Awakening         - deep
 
     ]]
 
@@ -2808,6 +2809,28 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             align = "billboard_x",
             pos = Vector3(-382.788, -2909.33, 273.567),
             start = 70
+        }
+    }
+
+    self.deep.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(5640.81, -3083.29, 86.8813),Rotation(68.8952, 45.9984, -1.70755e-006)},
+                fov = 60
+            },
+            [100] = {
+                path = {Vector3(5634.35, 41.2316, 7268.63),Rotation(75.194, -20.8517, -1.70755e-006)},
+                fov = 60
+            }
+        },
+        length = 22,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 700,
+            align = "billboard_x",
+            pos = Vector3(2997.24, 32.707, 6218.15),
+            start = 60
         }
     }
 end)
